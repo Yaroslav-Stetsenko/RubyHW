@@ -29,4 +29,13 @@ p '---------------------'
 a = (array.index array.min)-1
 p array[a]
 p '---------------------'
-p array.sort.uniq.first 3
+p array.min(3)
+p '---------------------'
+array_number = []
+array_letters = []
+array_number[1..26]=('a'..'z').to_a
+array.each do |el|
+	array_letters << array_number.values_at(el) if el <=
+	(array_number.size - 1)
+end
+p array_letters.flatten
