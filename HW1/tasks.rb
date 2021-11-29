@@ -3,10 +3,10 @@ p '1. Дан целочисленный массив.
 Необходимо вывести вначале его элементы с четными индексами, а затем - с нечетными.'
 array = [1,2,3,4,5,6,7,8,9,10]
 a = []
-array.each_with_index do |e,i| a << e if i.even?
+array.each.with_index do |e,i| a << e if i.even?
 end
 b =[]
-array.each_with_index do |e,i| b<<e if i.odd?
+array.each.with_index do |e,i| b<<e if i.odd?
 end
 p a.join(' , ') + (' , ') + b.join(' , ')
 p '--------------'
@@ -31,12 +31,13 @@ p '--------------'
 p '5. Дан целочисленный массив. 
 Преобразовать его, прибавив к четным числам первый элемент. Первый и последний элементы массива не изменять.'
 array = [6,23,37,40,51,63,70,80,94,10]
-   array.index(array.first)+1.upto(array.rindex(array.last)-1) do |i|
-      case array[i] %2 == 0
-       when true
-          array[i]+=array.first
-      end
-    end
+   array.map.with_index do |e, i|
+  if i.positive? && i != array.index(array.last) && e.even?
+    e + array.first
+  else
+    e
+  end
+end
 p array.join(' , ')
 p '--------------'
 p '6. Дан целочисленный массив. 
@@ -100,13 +101,9 @@ p '--------------'
 p '11. Дан целочисленный массив. 
 Заменить все отрицательные элементы на значение минимального.'
 array = [6,23,37,-40,51,63,70,-80,94,-10]
-  min = array.min(1)
-  array.each_with_index do |val,i|
-    if array[i]<0
-      array[i]=min
-    end
-  end
-p array.join(' , ')
+  min = array.min
+a = array.map { |e| e < 0 ? min : e }
+p a.join(' , ')
 p '--------------'
 p '12. Дан целочисленный массив. 
 Заменить все отрицательные элементы на значение максимального.'

@@ -3,16 +3,28 @@ class Dragon
   def initialize name, kind
     @name = name
     @kind = kind
-    puts 'Ваш ' + @name+ ' ' + @kind + ' родился.'
-  end
-  def kind_Of
-    if @kind == '1'  
-    kind = 'Собака'
-    elsif  @kind == '2'  
-      kind = 'Кошка'
+    if kind == '1'  
+      @kind = 'Собака'
+    elsif  kind == '2'  
+      @kind = 'Кошка'
+    elsif  kind == '3'  
+      @kind = 'Попугай'
+    elsif  kind == '4'  
+      @kind = 'Дракон'
+    elsif  kind == '5'  
+    print "Спасибо за игру\n"
+    exit
     end
-    print "Поздравляем"
+    puts 'Ваш ' + @name+ ' ' + @kind + ' родился.'
+    print "Поздравляем\n"
   end
+
+
+
+
+
+
+
 end
     print "Введите название питомца: "
     name = gets.chomp.to_s
@@ -20,7 +32,7 @@ end
     1 - Собака
     2 - Кошка
     3 - Попугай
-    4 - Дракон \n"
+    4 - Дракон 
+    5 - Ничего не хочу\n"
     kind = gets.chomp().to_s
     pet = Dragon.new name, kind
-    pet.kind_Of
