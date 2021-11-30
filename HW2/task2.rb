@@ -3,25 +3,80 @@ class Dragon
   def initialize name, kind
     @name = name
     @kind = kind
-    if kind == '1'  
-      @kind = 'Собака'
-    elsif  kind == '2'  
-      @kind = 'Кошка'
-    elsif  kind == '3'  
-      @kind = 'Попугай'
-    elsif  kind == '4'  
-      @kind = 'Дракон'
-    elsif  kind == '5'  
-    print "Спасибо за игру\n"
+    @life = 10
+    if kind == "1"
+      @kind = "Собака"
+    elsif  kind == "2"  
+      @kind = "Кошка"
+    elsif  kind == "3"  
+      @kind = "Попугай"
+    elsif  kind == "4"  
+      @kind = "Дракон"
+    elsif  kind == "5"  
+    puts "Спасибо за игру\n"
     exit
     end
-    puts 'Ваш ' + @name+ ' ' + @kind + ' родился.'
-    print "Поздравляем\n"
+    puts "Ваш " + @kind + " с именем " + @name + " родился."
+    puts "Поздравляем\n"
   end
 
 
+  def feed
+    puts "Вы хотите покормить " + @name +  " ?
+    1 - Да 
+    2 - Нет \n"
+    eat = gets.chomp.to_s
+    if eat == "1"
+      puts "Вы кормите " + @name + ".\n"
+    elsif eat == "2"
+      puts "Ваш " + @kind + " сьедает вас. Спасибо за игру\n"
+    exit
+    end
+    @life -= 1
+  end
+  
+  def walk
+    puts "Погулять с " + @name +  " ?
+    1 - Да 
+    2 - Нет \n"
+    walk = gets.chomp.to_s
+    if walk == "1"
+      puts "Ваш питомец довольный\n"
+    elsif walk == "2"
+      puts "Ваш питомец не довольный и он вас покидает\n"
+    exit
+    end
+    @life -= 1
+  end
+  
 
 
+ def toss
+  if @kind == "Собака" 
+    puts 'Вы подбрасываете ' + @name + '(а) в воздух.'
+    puts 'Он хихикает, облизывает вас.'
+  elsif @kind == "Кошка"
+    puts 'Вы подбрасываете ' + @name + '(а) в воздух.'
+    puts 'Он хихикает, облизывает вас.'
+  elsif @kind == "Дракон"
+    puts 'Вы подбрасываете ' + @name + '(а) в воздух.'
+    puts 'Он хихикает, обжигая при этом вам брови.'
+  end
+  @life -= 1
+  end
+
+def life
+  if @life >= 0
+  puts "End game1"
+  elsif @life == 0
+    puts "End game"
+    exit
+  end
+end
+
+
+
+  
 
 
 
@@ -36,3 +91,7 @@ end
     5 - Ничего не хочу\n"
     kind = gets.chomp().to_s
     pet = Dragon.new name, kind
+    pet.feed
+    pet.walk
+    pet.toss
+    pet.life
