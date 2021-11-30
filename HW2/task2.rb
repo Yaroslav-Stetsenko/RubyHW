@@ -3,7 +3,7 @@ class Dragon
   def initialize name, kind
     @name = name
     @kind = kind
-    @life = 10
+    @life = 3
     if kind == "1"
       @kind = "Собака"
     elsif  kind == "2"  
@@ -32,7 +32,7 @@ class Dragon
       puts "Ваш " + @kind + " сьедает вас. Спасибо за игру\n"
     exit
     end
-    @life -= 1
+  @life -= 1
   end
   
   def walk
@@ -46,7 +46,7 @@ class Dragon
       puts "Ваш питомец не довольный и он вас покидает\n"
     exit
     end
-    @life -= 1
+  @life -= 1
   end
   
 
@@ -65,20 +65,19 @@ class Dragon
   @life -= 1
   end
 
-def life
-  if @life >= 0
-  puts "End game1"
-  elsif @life == 0
-    puts "End game"
-    exit
-  end
-end
 
 
 
-  
 
-
+    def life
+      if @life > 0
+        puts "тут я хотел зациклить но не получилось"
+        exit
+      elsif @life <= 1
+        puts "Жизнь вашего питомца закончилась"
+        exit
+      end
+    end
 
 end
     print "Введите название питомца: "
@@ -95,3 +94,9 @@ end
     pet.walk
     pet.toss
     pet.life
+
+
+
+
+  
+
