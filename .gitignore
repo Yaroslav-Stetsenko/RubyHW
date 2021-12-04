@@ -1,0 +1,4 @@
+.rubocop.yml
+Gemfile.lock
+Gemfile
+/.git
