@@ -226,8 +226,6 @@ until command == 'exit'
   command = gets.chomp
 end
 
-
-
   def html
     markup = "
     <div>
