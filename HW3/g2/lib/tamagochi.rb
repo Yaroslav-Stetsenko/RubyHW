@@ -1,3 +1,9 @@
+require 'bundler'
+Bundler.setup
+
+#require 'compliterhtml'
+
+
 class Pet
   def initialize(name, kind)
     @name = name
@@ -219,3 +225,24 @@ until command == 'exit'
   end
   command = gets.chomp
 end
+
+
+
+  def html
+    markup = "
+    <div>
+      <p>Жизни: #{@name}</p>
+      <p>Настроение: #{@kind}</p>
+      <p>Кл-во воды: #{@life}</p>
+      <p>Кл-во воды: #{@health}</p>
+      <p>Кл-во воды: #{@happy}</p>
+      <p>Кл-во воды: #{@eat}</p>
+      <p>Кл-во воды: #{@sleepiness}</p>
+      <p>Кл-во воды: #{@moods}</p>
+      <p>Кл-во воды: #{@wc}</p>
+      <p>Кл-во воды: #{@anger}</p>
+      <p>Кл-во воды: #{@energy}</p>
+    </div>"
+
+  end
+

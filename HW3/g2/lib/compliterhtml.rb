@@ -9,7 +9,7 @@ class GetHtml
     f.puts '<html lang="en">'
     f.puts "  <head>"
     f.puts '    <meta charset="UTF-8">'
-    f.puts "    <title>Generated in getHtml</title>"
+    f.puts "    <title>My Pet</title>"
     f.puts "  </head>"
     f.puts "  <body>"
     f.puts "    <p>#{markup}</p>"
