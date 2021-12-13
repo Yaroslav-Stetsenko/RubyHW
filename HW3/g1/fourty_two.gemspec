@@ -1,4 +1,5 @@
 Gem::Specification.new do |s|
+  s.required_ruby_version = '>= 2.5.0'
   s.name        = 'fourty_two'
   s.version     = '0.0.1'
   s.summary     = 'fourty_two'

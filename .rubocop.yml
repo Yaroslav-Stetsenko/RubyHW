@@ -21,3 +21,5 @@ Metrics/CyclomaticComplexity:
   Enabled: false
 Lint/AmbiguousBlockAssociation:
   Enabled: false
+Layout/EndOfLine:
+  EnforcedStyle: crlf
