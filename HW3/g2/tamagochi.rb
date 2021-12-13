@@ -3,7 +3,6 @@ Bundler.setup
 
 require 'compliterhtml'
 
-
 class Pet
   def initialize(name, kind)
     @name = name
@@ -13,7 +12,7 @@ class Pet
     @happy = 10
     @eat = 10
     @sleepiness = 10
-    @moods = 10
+    @moods = 15
     @wc = 0
     @love = 10
     @anger = 0
@@ -21,10 +20,10 @@ class Pet
   end
 
   def play
-    @happy += 5
-    @energy -= 5
+    @happy += rand(1..5)
+    @energy -= rand(1..5)
     @wc += 1
-    @eat -= 5
+    @eat -= rand(1..5)
     pas_time
   end
 
@@ -35,7 +34,7 @@ class Pet
   end
 
   def food
-    @eat += 10
+    @eat += rand(5..10)
     @happy += 3
     @love += 2
     @wc += 3
@@ -51,13 +50,13 @@ class Pet
 
   def bathe
     @health += 2
-    @love = 10
+    @love = rand(5..10)
     @energy -= 1
     pas_time
   end
 
   def doctor
-    @life += 5
+    @life += rand(1..5)
     @health += 2
     pas_time
   end
@@ -69,7 +68,7 @@ class Pet
     @sleepiness -= 1
     @moods += 2
     @wc += 2
-    @love += 5
+    @love += rand(1..5)
     @energy -= 2
     pas_time
   end
@@ -80,7 +79,7 @@ class Pet
     @sleepiness -= 1
     @moods += 2
     @wc += 2
-    @love += 5
+    @love += rand(1..5)
     @energy -= 2
     pas_time
   end
@@ -88,7 +87,7 @@ class Pet
   def scratch
     @happy += 3
     @moods += 2
-    @love += 5
+    @love += rand(1..5)
     pas_time
   end
 
@@ -97,6 +96,7 @@ class Pet
     @moods -= 2
     @eat -= 2
     @happy -= 3
+    @anger += rand(1..5)
     pas_time
   end
 
@@ -116,6 +116,7 @@ class Pet
   private
 
   def pas_time
+    html
     @life -= 1
     @eat -= rand(3)
     @moods -= rand(3)
@@ -138,11 +139,33 @@ class Pet
       p "Ваш #{@name} покидает вас."
       exit
     end
-    if @anger >= 20
-      p "Ваш #{@name} укусил вас и убежал."
-      exit
-    end
+    return unless @anger >= 20
+
+    p "Ваш #{@name} укусил вас и убежал."
+    exit
   end
+
+  def html
+    content = "
+      <div>
+        <p>Жизни: #{@name}</p>
+        <p>Настроение: #{@kind}</p>
+        <p>Кл-во воды: #{@life}</p>
+        <p>Кл-во воды: #{@health}</p>
+        <p>Кл-во воды: #{@happy}</p>
+        <p>Кл-во воды: #{@eat}</p>
+        <p>Кл-во воды: #{@sleepiness}</p>
+        <p>Кл-во воды: #{@moods}</p>
+        <p>Кл-во воды: #{@wc}</p>
+        <p>Кл-во воды: #{@anger}</p>
+        <p>Кл-во воды: #{@energy}</p>
+      </div>"
+  end
+
+
+
+
+  
 end
 
 p 'Введите название питомца:'
@@ -226,21 +249,4 @@ until command == 'exit'
   command = gets.chomp
 end
 
-  def html
-    markup = "
-    <div>
-      <p>Жизни: #{@name}</p>
-      <p>Настроение: #{@kind}</p>
-      <p>Кл-во воды: #{@life}</p>
-      <p>Кл-во воды: #{@health}</p>
-      <p>Кл-во воды: #{@happy}</p>
-      <p>Кл-во воды: #{@eat}</p>
-      <p>Кл-во воды: #{@sleepiness}</p>
-      <p>Кл-во воды: #{@moods}</p>
-      <p>Кл-во воды: #{@wc}</p>
-      <p>Кл-во воды: #{@anger}</p>
-      <p>Кл-во воды: #{@energy}</p>
-    </div>"
-
-  end
 
