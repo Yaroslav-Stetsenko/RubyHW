@@ -4,7 +4,7 @@ Bundler.setup
 require 'compliterhtml'
 
 class Pet
-  def initialize(name, kind)
+  def initialize(name, kind, smile)
     @name = name
     @kind = kind
     @life = 100
@@ -124,6 +124,7 @@ class Pet
 
   def stats
     @stats = ''
+    @stats << @kind.to_s
     @stats << "#{@life} Жизни "
     @stats << "#{@health} Здоровье "
     @stats << "#{@happy} Счастье "
@@ -171,22 +172,22 @@ class Pet
   puts 'Введите название питомца:'
   name = gets.chomp
   print "Выберите вашего питомца:
-    1 - Собака
-    2 - Кошка
-    3 - Попугай
-    4 - Дракон
+    1 - Собака 🐶
+    2 - Кошка 🐱
+    3 - Попугай 🐦
+    4 - Дракон 🐉
     5 - Ничего не хочу\n"
   com = gets.chomp.to_s
 
   case com
   when '1'
-    @kind = 'Собака'
+    @kind = 'Собака 🐶 '
   when '2'
-    @kind = 'Кошка'
+    @kind = 'Кошка 🐱 '
   when '3'
-    @kind = 'Попугай'
+    @kind = 'Попугай 🐦 '
   when '4'
-    @kind = 'Дракон'
+    @kind = 'Дракон 🐉 '
   when '5'
     @kind = 'Спасибо за игру'
     exit
@@ -194,7 +195,7 @@ class Pet
     p 'Выберите команду от 1 до 5.'
   end
 
-  pet = Pet.new name, @kind
+  pet = Pet.new name, @kind, @smile
 
   p "Ваш #{@kind} с именем #{name} родился."
   p 'Поздравляем'
@@ -222,11 +223,9 @@ class Pet
     when '3'
       pet.food
       p "Вы кормите #{name} и он счастлив."
-#      pet.smile = '🙏'
     when '4'
       pet.sleep
       p "Вы укладываете #{name} спать."
-#      pet.smile = 'U+1F62A'
     when '5'
       pet.bathe
       p "Ваш питомец #{name} теперь чистенький."
