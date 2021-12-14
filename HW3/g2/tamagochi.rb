@@ -17,6 +17,7 @@ class Pet
     @love = 10
     @anger = 0
     @energy = 10
+    @smile = smile
   end
 
   def play
@@ -221,9 +222,11 @@ class Pet
     when '3'
       pet.food
       p "Вы кормите #{name} и он счастлив."
+#      pet.smile = '🙏'
     when '4'
       pet.sleep
       p "Вы укладываете #{name} спать."
+#      pet.smile = 'U+1F62A'
     when '5'
       pet.bathe
       p "Ваш питомец #{name} теперь чистенький."

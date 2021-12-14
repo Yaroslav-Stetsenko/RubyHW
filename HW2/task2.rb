@@ -134,8 +134,9 @@ class Pet
       exit
     end
     return unless @anger >= 20
-      p "Ваш #{@name} укусил вас и убежал."
-      exit
+
+    p "Ваш #{@name} укусил вас и убежал."
+    exit
   end
 end
 
