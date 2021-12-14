@@ -24,13 +24,15 @@ class Pet
     @energy -= rand(1..5)
     @wc += 1
     @eat -= rand(1..5)
-    pas_time
+    time_passed
+    make_html(stats)
   end
 
   def want_poo
     @wc = 0
     @eat -= 1
-    pas_time
+    time_passed
+    make_html(stats)
   end
 
   def food
@@ -38,27 +40,29 @@ class Pet
     @happy += 3
     @love += 2
     @wc += 3
-    pas_time
+    time_passed
+    make_html(stats)
   end
 
   def sleep
     @sleepiness = 0
     @happy += 2
     @love += 2
-    pas_time
   end
 
   def bathe
     @health += 2
     @love = rand(5..10)
     @energy -= 1
-    pas_time
+    time_passed
+    make_html(stats)
   end
 
   def doctor
     @life += rand(1..5)
     @health += 2
-    pas_time
+    time_passed
+    make_html(stats)
   end
 
   def stroll
@@ -70,7 +74,8 @@ class Pet
     @wc += 2
     @love += rand(1..5)
     @energy -= 2
-    pas_time
+    time_passed
+    make_html(stats)
   end
 
   def training
@@ -81,14 +86,16 @@ class Pet
     @wc += 2
     @love += rand(1..5)
     @energy -= 2
-    pas_time
+    time_passed
+    make_html(stats)
   end
 
   def scratch
     @happy += 3
     @moods += 2
     @love += rand(1..5)
-    pas_time
+    time_passed
+    make_html(stats)
   end
 
   def independence
@@ -97,7 +104,8 @@ class Pet
     @eat -= 2
     @happy -= 3
     @anger += rand(1..5)
-    pas_time
+    time_passed
+    make_html(stats)
   end
 
   def help
@@ -113,10 +121,24 @@ class Pet
     p '10 - Пусть сам себя развлекает'
   end
 
+  def stats
+    @stats = ''
+    @stats << "#{@life} Жизни "
+    @stats << "#{@health} Здоровье "
+    @stats << "#{@happy} Счастье "
+    @stats << "#{@eat} Голов "
+    @stats << "#{@sleepiness} Сонливось "
+    @stats << "#{@moods} Настроение "
+    @stats << "#{@wc} Хочет в туалет "
+    @stats << "#{@love} Любовь "
+    @stats << "#{@anger} Злость "
+    @stats << "#{@energy} Энергия "
+    @stats
+  end
+
   private
 
-  def pas_time
-    html
+  def time_passed
     @life -= 1
     @eat -= rand(3)
     @moods -= rand(3)
@@ -145,59 +167,38 @@ class Pet
     exit
   end
 
-  def html
-    content = "
-      <div>
-        <p>Жизни: #{@name}</p>
-        <p>Настроение: #{@kind}</p>
-        <p>Кл-во воды: #{@life}</p>
-        <p>Кл-во воды: #{@health}</p>
-        <p>Кл-во воды: #{@happy}</p>
-        <p>Кл-во воды: #{@eat}</p>
-        <p>Кл-во воды: #{@sleepiness}</p>
-        <p>Кл-во воды: #{@moods}</p>
-        <p>Кл-во воды: #{@wc}</p>
-        <p>Кл-во воды: #{@anger}</p>
-        <p>Кл-во воды: #{@energy}</p>
-      </div>"
-  end
-
-
-
-
-  
-end
-
-p 'Введите название питомца:'
-name = gets.chomp.to_s
-print "Выберите вашего питомца:
+  puts 'Введите название питомца:'
+  name = gets.chomp
+  print "Выберите вашего питомца:
     1 - Собака
     2 - Кошка
     3 - Попугай
     4 - Дракон
     5 - Ничего не хочу\n"
-com = gets.chomp.to_s
-pet = Pet.new name, @kind
+  com = gets.chomp.to_s
 
-case com
-when '1'
-  @kind = 'Собака'
-when '2'
-  @kind = 'Кошка'
-when '3'
-  @kind = 'Попугай'
-when '4'
-  @kind = 'Дракон'
-when '5'
-  @kind = 'Спасибо за игру'
-  exit
-else
-  p 'Выберите команду от 1 до 5.'
-end
-p "Ваш #{@kind} с именем #{name} родился."
-p 'Поздравляем'
-p "Что вы хотите сделать с #{name}?"
-puts '    1 - Поиграть
+  case com
+  when '1'
+    @kind = 'Собака'
+  when '2'
+    @kind = 'Кошка'
+  when '3'
+    @kind = 'Попугай'
+  when '4'
+    @kind = 'Дракон'
+  when '5'
+    @kind = 'Спасибо за игру'
+    exit
+  else
+    p 'Выберите команду от 1 до 5.'
+  end
+
+  pet = Pet.new name, @kind
+
+  p "Ваш #{@kind} с именем #{name} родился."
+  p 'Поздравляем'
+  p "Что вы хотите сделать с #{name}?"
+  puts '    1 - Поиграть
     2 - Отвести в туалет
     3 - Покормить
     4 - Положить спать
@@ -208,45 +209,44 @@ puts '    1 - Поиграть
     9 - Почесать
     10 - Пусть сам себя развлекает'
 
-command = gets.chomp
-until command == 'exit'
-  case command
-  when '1'
-    pet.play
-    p "Вы играети с #{name}."
-  when '2'
-    pet.want_poo
-    p "#{name} идет в туалет."
-  when '3'
-    pet.food
-    p "Вы кормите #{name} и он счастлив."
-  when '4'
-    pet.sleep
-    p "Вы укладываете #{name} спать."
-  when '5'
-    pet.bathe
-    p "Ваш питомец #{name} теперь чистенький."
-  when '6'
-    pet.doctor
-    p "Ваш питомец #{name} стал здоровее."
-  when '7'
-    pet.stroll
-    p "Вы прогулялись c #{name}, он стал счастливее."
-  when '8'
-    pet.training
-    p "Вы дресируете #{name}."
-  when '9'
-    pet.scratch
-    p "Вы почесали #{name}."
-  when '10'
-    pet.independence
-    p "Ваш #{@kind} развлекает себя сам."
-  when '11'
-    pet.help
-  else
-    p 'Выберите команду от 1 до 10. Нажмите 11, чтобы посмотреть возможные команды'
-  end
   command = gets.chomp
+  until command == 'exit'
+    case command
+    when '1'
+      pet.play
+      p "Вы играети с #{name}."
+    when '2'
+      pet.want_poo
+      p "#{name} идет в туалет."
+    when '3'
+      pet.food
+      p "Вы кормите #{name} и он счастлив."
+    when '4'
+      pet.sleep
+      p "Вы укладываете #{name} спать."
+    when '5'
+      pet.bathe
+      p "Ваш питомец #{name} теперь чистенький."
+    when '6'
+      pet.doctor
+      p "Ваш питомец #{name} стал здоровее."
+    when '7'
+      pet.stroll
+      p "Вы прогулялись c #{name}, он стал счастливее."
+    when '8'
+      pet.training
+      p "Вы дресируете #{name}."
+    when '9'
+      pet.scratch
+      p "Вы почесали #{name}."
+    when '10'
+      pet.independence
+      p "Ваш #{@kind} развлекает себя сам."
+    when '11'
+      pet.help
+    else
+      p 'Выберите команду от 1 до 10. Нажмите 11, чтобы посмотреть возможные команды'
+    end
+    command = gets.chomp
+  end
 end
-
-

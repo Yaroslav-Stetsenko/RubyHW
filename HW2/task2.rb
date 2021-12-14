@@ -7,7 +7,7 @@ class Pet
     @happy = 10
     @eat = 10
     @sleepiness = 10
-    @moods = 10
+    @moods = 15
     @wc = 0
     @love = 10
     @anger = 0
@@ -15,10 +15,10 @@ class Pet
   end
 
   def play
-    @happy += 5
-    @energy -= 5
+    @happy += rand(1..5)
+    @energy -= rand(1..5)
     @wc += 1
-    @eat -= 5
+    @eat -= rand(1..5)
     pas_time
   end
 
@@ -29,7 +29,7 @@ class Pet
   end
 
   def food
-    @eat += 10
+    @eat += rand(5..10)
     @happy += 3
     @love += 2
     @wc += 3
@@ -45,13 +45,13 @@ class Pet
 
   def bathe
     @health += 2
-    @love = 10
+    @love = rand(5..10)
     @energy -= 1
     pas_time
   end
 
   def doctor
-    @life += 5
+    @life += rand(1..5)
     @health += 2
     pas_time
   end
@@ -63,7 +63,7 @@ class Pet
     @sleepiness -= 1
     @moods += 2
     @wc += 2
-    @love += 5
+    @love += rand(1..5)
     @energy -= 2
     pas_time
   end
@@ -74,7 +74,7 @@ class Pet
     @sleepiness -= 1
     @moods += 2
     @wc += 2
-    @love += 5
+    @love += rand(1..5)
     @energy -= 2
     pas_time
   end
@@ -82,7 +82,7 @@ class Pet
   def scratch
     @happy += 3
     @moods += 2
-    @love += 5
+    @love += rand(1..5)
     pas_time
   end
 
@@ -91,6 +91,7 @@ class Pet
     @moods -= 2
     @eat -= 2
     @happy -= 3
+    @anger += rand(1..5)
     pas_time
   end
 
@@ -132,10 +133,9 @@ class Pet
       p "Ваш #{@name} покидает вас."
       exit
     end
-    if @anger >= 20
+    return unless @anger >= 20
       p "Ваш #{@name} укусил вас и убежал."
       exit
-    end
   end
 end
 
