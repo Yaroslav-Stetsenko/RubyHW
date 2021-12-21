@@ -52,6 +52,10 @@ class Pet
       if get('health') <= 0 || get('life') <= 0 || get('eat') <= 0 || get('sleepiness') <= 0 || get('moods') <= 0 || get('happy') <= 0 || get('love') <= 0 || get('anger') >= 20 || get('energy') <= 0
         Rack::Response.new('Game Over', 404)
         Rack::Response.new(render('over.html.erb'))
+      if get('eat') >= 50
+        Rack::Response.new('Game Over', 404)
+        Rack::Response.new(render('over1.html.erb'))
+      end
       else
         Rack::Response.new(render('index.html.erb'))
       end
