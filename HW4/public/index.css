@@ -1,16 +1,47 @@
-.row{
+h1{
+  text-align: center;
+}
+
+.block-btn {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input{
+  display: flex;
   justify-content: center;
 }
 
-.img{
-  text-align: center;
-}
+.form {
+         padding: 32px;
+         border-radius: 10px;
+         box-shadow: 0 4px 16px #ccc;
+         font-family: sans-serif;
+         letter-spacing: 1px;
+ }
 
-.h3_complete{
-  text-align: center;
-  font-size: 30px;
-}
 
-.body_index{
-text-align: center;
-}
+ .form_button {
+         padding: 10px 20px;
+         border: none;
+         border-radius: 5px;
+         font-family: sans-serif;
+         letter-spacing: 1px;
+         font-size: 16xp;
+         color :#000 ;
+         background-color: #0071f0;
+         outline: none;
+         cursor: pointer;
+         transition: 0.3s;
+         margin: 5px;
+ }
+
+ .form_input {
+         width: 100%;
+         padding: 0 0 10px 0;
+         border: none;
+         border-bottom: 1px solid #e0e0e0;
+         background-color: transparent;
+         outline: none;
+         transition: 0.3s;
+ }
