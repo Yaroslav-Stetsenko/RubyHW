@@ -10,8 +10,8 @@
 
 <div class="container">
     <div class="row">
-  <h1> <%= name %> was born!!!!!</h1>
-  <div class="col-lg-6">
+  <h1>Ваш <%= kind %> с именем <%= name %> был рожден.</h1>
+  <div class="col-lg-6 col-sm-6" >
     <h3>health   <%= get('health')  %></h3>
     <h3>life <%= get('life')%></h3>
     <h3>eat  <%= get('eat') %></h3>
@@ -24,7 +24,7 @@
     <h3>energy  <%= get('energy') %></h3>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-lg-6 col-sm-6">
     <form action="/change" method="get" class="block-btn">
 
       <button type="submit" class="form_button" name="health" value="health">Покупать</button>

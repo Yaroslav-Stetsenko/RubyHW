@@ -10,6 +10,7 @@ class Pet
 
   def initialize(env)
     @req = Rack::Request.new(env)
+    @kind = kind
     @life = 100
     @health = 10
     @happy = 10
@@ -41,6 +42,7 @@ class Pet
         response.set_cookie('anger', @anger)
         response.set_cookie('energy', @energy)
         response.set_cookie('name', @req.params['name'])
+        response.set_cookie('kind', @req.params['kind'])
         response.redirect('/start')
       end
 
@@ -79,8 +81,15 @@ class Pet
 
   def name
     name = @req.cookies['name'].delete(' ')
-    name.empty? ? 'Pet' : @req.cookies['name']
+    name.empty? ? 'Гоша' : @req.cookies['name']
+
+
   end
+
+   def kind
+    kind = @req.cookies['kind']
+    kind.empty? ? 'Pet' : @req.cookies['kind']
+  end 
 
   def get(attr)
     @req.cookies[attr.to_s].to_i
