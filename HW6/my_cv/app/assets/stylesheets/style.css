@@ -1,4 +1,4 @@
-.body-container{
+section{
     max-width: 1240px;
     margin-left: auto;
     margin-right: auto;
@@ -6,6 +6,64 @@
     padding-right: 20px;
 }
 
+h1{
+    font-size: 50px;
+}
+
+h2{
+    font-size: 40px;
+}
+
+h2{
+    font-size: 30px;
+}
+
+p{
+    font-size: 20px;
+}
+
 .logo{
     background-image: url(1.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 484px;
+    width: 500px;
+}
+
+.contact-info{
+    height: 484px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+}
+
+.main-block{
+    background-image: url(2.png);
+    height: 750px;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+}
+
+.main-block_text{
+    text-align: right;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.text-cv{
+    width: 250px;
+}
+
+ol{
+    list-style-type: none;
+}
+
+.img-block{
+    position: absolute;
+    margin-left: 1em;
+    margin-top: 0.1em;
 }
