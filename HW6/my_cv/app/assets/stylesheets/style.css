@@ -23,12 +23,12 @@ p{
 }
 
 .logo{
-    background-image: url(1.png);
+    /*background-image: url(1.png);*/
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 484px;
-    width: 500px;
+    background-color: #000;
+    border-radius: 0 0 45px 0;
 }
 
 .contact-info{
@@ -62,8 +62,40 @@ ol{
     list-style-type: none;
 }
 
-.img-block{
+.img-block {
+    background: black;
     position: absolute;
-    margin-left: 1em;
-    margin-top: 0.1em;
+    height: 650px;
+    border-radius: 45px 0 0 0;
+    width: 625px;
+    top: 700px;
+    z-index: 0;
+}
+.img-block::after {
+    content: '';
+    position: absolute;
+    border: 315px solid transparent;
+    border-right: 310px solid black;
+    border-bottom: 310px solid black;
+    top: -597px;
+    border-radius: 0 0 0 45px;
+}
+
+.text-h2{
+    padding: 180px 0 0 80px;
+
+}
+.block-text{
+    z-index: 1;
+    position: relative;
+}
+
+.text-right{
+    text-align: right;
+    margin: 50px 0 50px 100px;
+}
+
+.text-left{
+    text-align: left;
+    margin: 50px 0 0 10px;
 }
